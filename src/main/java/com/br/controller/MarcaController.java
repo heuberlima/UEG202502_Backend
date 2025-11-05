@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -33,7 +34,7 @@ public class MarcaController {
 	//Listar
 	@GetMapping("/marca")
 	public List<Marca> listar(){
-		return this.mRep.findAll();
+		return this.mRep.findAll(Sort.by(Sort.Direction.DESC, "codigo"));
 	}
 
 	//Consultar

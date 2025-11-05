@@ -88,6 +88,8 @@ public class AutomovelController {
 		auto.setPrecoVenda(automovel.getPrecoVenda());
 		auto.setTrioEletrico(automovel.isTrioEletrico());
 		
+		auto.setMarca(automovel.getMarca());
+		
 		Automovel atualizado = autorep.save(auto);
 			
 		return ResponseEntity.ok(atualizado);

@@ -2,6 +2,9 @@ package com.br.model;
 
 import java.sql.Date;
 
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ManyToOne;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -36,6 +39,8 @@ public class Automovel {
 	@Column(name="quantidade")
 	private int quantidade;
 
+	@ManyToOne(optional = false, fetch = FetchType.EAGER)
+    private Marca marca;
 	
 	//Construtor padrao, para a super classe
 	public Automovel() {
@@ -46,7 +51,7 @@ public class Automovel {
 
 	//Construtor com todos os campos
 	public Automovel(Long codigo, String nome, String modelo, Date dataFabricacao, double precoVenda,
-			boolean trioEletrico, int quantidade) {
+			boolean trioEletrico, int quantidade, Marca marca) {
 		super();
 		this.codigo = codigo;
 		this.nome = nome;
@@ -55,6 +60,7 @@ public class Automovel {
 		this.precoVenda = precoVenda;
 		this.trioEletrico = trioEletrico;
 		this.quantidade = quantidade;
+		this.marca = marca;
 	}
 
 
@@ -128,13 +134,15 @@ public class Automovel {
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 
+
+	public Marca getMarca() {
+		return marca;
+	}
+
+
+	public void setMarca(Marca marca) {
+		this.marca = marca;
+	}
+	
 }
